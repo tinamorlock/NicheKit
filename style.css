@@ -1,0 +1,181 @@
+/*
+Theme Name: NicheKit
+Theme URI: Don't have this yet
+Author: Tina Morlock
+Author URI: Don't have this yet
+Description: Starter pack for influencers looking to build their personal brand. Ideal for influencers with multiple channels.
+Version: 1.0
+*/
+
+:root {
+    --bg-dark: #0F0F0F;
+    --bg-card: #1A1A1A;
+    --text-light: #FFFFFF;
+    --neon-aqua: #04d9ff;
+    --neon-pink: #fe58bd;
+    --neon-green: #79ff60;
+    --neon-yellow: #FFD700;
+
+    --font-main: 'Segoe UI', sans-serif;
+    --radius: 12px;
+    --spacing: 1rem;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    font-family: var(--font-main);
+    margin: 50px;
+    padding: 0;
+    padding-top: 3rem; /* Adjust depending on topbar height */
+}
+
+body.admin-bar .topbar {
+    top: 32px; /* Default height of admin bar on desktop */
+}
+
+@media screen and (max-width: 782px) {
+    body.admin-bar .topbar {
+        top: 46px; /* Taller admin bar on smaller screens */
+    }
+}
+
+h1, h2, h3 {
+    color: var(--neon-aqua);
+}
+
+a {
+    color: var(--neon-pink);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--neon-yellow);
+}
+
+.channel {
+    background-color: var(--bg-card);
+    border: 2px solid var(--neon-green);
+    border-radius: var(--radius);
+    padding: var(--spacing);
+    margin-bottom: var(--spacing);
+}
+
+.cta-buttons a {
+    background: var(--neon-pink);
+    color: var(--text-light);
+    padding: 0.75rem 1.5rem;
+    border-radius: 5px;
+    display: inline-block;
+    margin-right: 1rem;
+    font-weight: bold;
+}
+
+.cta-buttons a:hover {
+    background: var(--neon-yellow);
+    color: #000;
+}
+
+
+
+.channel-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.channel {
+    border: 1px solid #ddd;
+    padding: 1rem;
+    border-radius: 10px;
+    background-color: #fff;
+}
+
+/* Top Bar Base Styles */
+.topbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: var(--bg-dark);
+    z-index: 9999;
+    box-sizing: border-box;
+}
+
+/* Color Variants */
+.topbar--green  { background-color: var(--neon-green); }
+.topbar--pink   { background-color: var(--neon-pink); }
+.topbar--blue   { background-color: var(--neon-aqua); }
+.topbar--yellow { background-color: var(--neon-yellow); }
+
+.main-nav {
+    display: flex;
+    justify-content: center;
+    background-color: var(--bg-dark);
+    padding: 1rem;
+}
+
+.menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 1.5rem;
+    position: relative;
+    font-weight: bold;
+    font-size: x-large;
+}
+
+.menu li {
+    position: relative;
+}
+
+/* Submenu container */
+.menu li ul.sub-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--bg-dark);
+    display: none;
+    min-width: 180px;
+    padding: 0;
+    margin: 0;
+    border-radius: 6px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    z-index: 1000;
+}
+
+/* Show submenu on hover */
+.menu li:hover > .sub-menu {
+    display: block;
+}
+
+/* Submenu items */
+.menu li ul.sub-menu li {
+    display: block;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.menu li ul.sub-menu li:last-child {
+    border-bottom: none;
+}
+
+/* Submenu links */
+.menu li ul.sub-menu li a {
+    display: block;
+    padding: 0.75rem 1rem;
+    color: var(--text-light);
+    text-decoration: none;
+    background: none;
+    transition: background 0.2s ease;
+}
+
+.menu li ul.sub-menu li a:hover {
+    color: var(--neon-green);
+}
