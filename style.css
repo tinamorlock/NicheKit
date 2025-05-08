@@ -31,12 +31,11 @@ body {
 }
 
 body.admin-bar .topbar {
-    top: 32px; /* Default height of admin bar on desktop */
+    top: 32px;
 }
-
 @media screen and (max-width: 782px) {
     body.admin-bar .topbar {
-        top: 46px; /* Taller admin bar on smaller screens */
+        top: 46px;
     }
 }
 
@@ -48,9 +47,16 @@ a {
     color: var(--neon-pink);
     text-decoration: none;
 }
-
 a:hover {
     color: var(--neon-yellow);
+}
+
+/* === Components === */
+.channel-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
 }
 
 .channel {
@@ -70,29 +76,12 @@ a:hover {
     margin-right: 1rem;
     font-weight: bold;
 }
-
 .cta-buttons a:hover {
     background: var(--neon-yellow);
     color: #000;
 }
 
-
-
-.channel-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-    padding: 2rem;
-}
-
-.channel {
-    border: 1px solid #ddd;
-    padding: 1rem;
-    border-radius: 10px;
-    background-color: #fff;
-}
-
-/* Top Bar Base Styles */
+/* === Topbar === */
 .topbar {
     position: fixed;
     top: 0;
@@ -107,12 +96,12 @@ a:hover {
     box-sizing: border-box;
 }
 
-/* Color Variants */
 .topbar--green  { background-color: var(--neon-green); }
 .topbar--pink   { background-color: var(--neon-pink); }
 .topbar--blue   { background-color: var(--neon-aqua); }
 .topbar--yellow { background-color: var(--neon-yellow); }
 
+/* === Desktop Navigation === */
 .main-nav {
     display: flex;
     justify-content: center;
@@ -126,7 +115,6 @@ a:hover {
     padding: 0;
     display: flex;
     gap: 1.5rem;
-    position: relative;
     font-weight: bold;
     font-size: x-large;
 }
@@ -135,7 +123,11 @@ a:hover {
     position: relative;
 }
 
-/* Submenu container */
+.menu li a {
+    color: var(--text-light);
+    text-decoration: none;
+}
+
 .menu li ul.sub-menu {
     position: absolute;
     top: 100%;
@@ -151,31 +143,136 @@ a:hover {
     z-index: 1000;
 }
 
-/* Show submenu on hover */
 .menu li:hover > .sub-menu {
     display: block;
 }
 
-/* Submenu items */
 .menu li ul.sub-menu li {
     display: block;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
-
 .menu li ul.sub-menu li:last-child {
     border-bottom: none;
 }
 
-/* Submenu links */
 .menu li ul.sub-menu li a {
     display: block;
     padding: 0.75rem 1rem;
     color: var(--text-light);
-    text-decoration: none;
-    background: none;
     transition: background 0.2s ease;
 }
-
 .menu li ul.sub-menu li a:hover {
     color: var(--neon-green);
+}
+
+/* === Hamburger Toggle (Mobile Only) === */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 28px;
+    height: 22px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1001;
+    margin-left: auto;
+    margin-right: 1rem;
+}
+
+.menu-toggle .bar {
+    height: 3px;
+    width: 100%;
+    background-color: var(--text-light);
+    border-radius: 2px;
+}
+
+/* === Mobile Drawer === */
+.mobile-drawer {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background-color: #fff;
+    color: #000;
+    z-index: 10000;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.mobile-drawer.open {
+    display: flex;
+}
+
+.menu-close {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    font-size: 2rem;
+    background: none;
+    border: none;
+    color: #000;
+    cursor: pointer;
+}
+
+/* === Mobile Menu Items === */
+.mobile-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+.mobile-menu li {
+    list-style: none;
+    margin: 1.5rem 0;
+}
+
+.mobile-menu a {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #000;
+    text-decoration: none;
+}
+
+.mobile-menu a:hover {
+    color: var(--neon-pink);
+}
+
+/* === Mobile Menu Submenus: Show on Hover === */
+.mobile-menu .sub-menu {
+    display: none;
+    padding-left: 1rem;
+}
+
+.mobile-menu li:hover > .sub-menu {
+    display: block;
+}
+
+/* === Responsive Visibility Rules === */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: flex;
+    }
+
+    .main-nav {
+        display: none;
+    }
+
+    .mobile-drawer.open {
+        display: flex;
+    }
+}
+
+@media (min-width: 769px) {
+    .menu-toggle,
+    .menu-close,
+    .mobile-drawer {
+        display: none !important;
+    }
+
+    .main-nav {
+        display: flex !important;
+    }
 }
